@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Predict 'Em All Group Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#writeUpButton").click(function () {
+                $("#writeUp").animate({ height: "toggle" }, "slow");
+            });
+            $("#presentationButton").click(function () {
+                $("#presentation").animate({ height: "toggle" }, "slow");
+            });
+            $("#dotButton").click(function () {
+                $("#dot").animate({ height: "toggle" }, "slow");
+            });
+            $("#taylorButton").click(function () {
+                $("#taylor").animate({ height: "toggle" }, "slow");
+            });
+            $("#henryButton").click(function () {
+                $("#henry").animate({ height: "toggle" }, "slow");
+            });
+        });
+    </script>
+    <style>
+        body{
+            margin:auto;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        h1, h2, h3, h4, span{
+            text-align:center;
+            position:center;
+        }
+        .content{
+            display:none;
+        }
+        div{
+            width: 700px;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predict 'Em All Group Page</h1>
+    <h3>Group Members: Henry Weeks, Taylor Axelson, Dot Charmichael</h3>
+
+    <div>
+        <button type="button" id="writeUpButton">Final Write-Up</button>
+    </div>
+    <div id="writeUp" class="content">
+        <h4>
+            Motivation:
+        </h4>
+        <p>
+            The two main goals created for this project go hand in hand, and fit together efficiently throughout the progress of this project. 
+            Based on the trends found in the data, our goal was to create the most effective model to predict pokemon based on variables in the dataset. 
+            Secondly, to create best application for users to pull information from our database based on specific variables of their choice. 
+            These goals are one that can actually be put to use, which is one of the stronger motivators. 
+            The application is very appealing because not only is it an applications that users could use, it is something that users would want to use, 
+            this is because it is a helpful tool that could help users to advance in the game. The goals fit together nicely because they both stem from 
+            finding useful trends or patterns in the data in order for them to be effective, this is the first step that will need to occur. 
+            Along with using previously discovered trends, the goals will prove helpful to find new trends in the data as well. 
+            For example, once a model is fit, it will uncover trends, some of which may have been known, others could be new. On the other side, 
+            the model could show a lack of tends, which is equally as helpful because this brings new information and ideas to the surface, 
+            providing additional motivation in contradicting popular beliefs. 
+            Pokemon creators state that different areas or conditions will cause specific pokemon to spawn, and this is something that would be very interesting to consider. 
+            If this is true, it will be interesting to see the relationships, and how effectively a predictive model can be, if it is false, 
+            the consideration of why it does not follow the pattern can be analyzed. These goals and ideas combined will tell a story about the data, 
+            and how pokemon interacted in the time period of the dataset.
+        </p>
+        <h4>
+            Data Collection:
+        </h4>
+        <p>
+            The data was collected from Kaggle.com, in CSV format, which made it easy to download. 
+            This dataset consists of roughly 293,000 pokemon captures, having coordinates, time, weather, population density, etc. as features. 
+            They were all captured over the first week of August 2016, and includes five full days, with two partial days. 
+            The data records each pokemon capture around the entire world in this time period. 
+            This time period is soon after the game was released in July of 2016.
+        </p>
+        <h4>
+            Data Cleaning:
+        </h4>
+        <p>
+            The data was in very good shape when we acquired it, which was very helpful during the data cleaning process. 
+            We had to change a few variables regarding north and south America, as they were all classified into the same category. 
+            This was done by using latitude to classify the difference. The excessive size of the file caused issues and could not be read directly into r. 
+            The file was stripped of unnecessary variables, such as ‘distance from a pokestop’ and the capture ID, along with being split up into multiple files by day. 
+            These could then all be read into r separately and then merged together. Overall the data cleaning process was very simple.
+        </p>
+        <h4>
+            Results:
+        </h4>
+        <p>
+            From looking at visuals and simple statistics many new things were learned. 
+            Some things were displayed as expected, and others showed things that brought new ideas to light about how the game was created and how it is being played. 
+            Any person who has played pokemon go, knows that some pokemon are far more popular than others, this was showcased in the bar chart of pokemon id by count, 
+            it revealed that a small number of pokemon are very popular and other are far less common. This was something that was expected, and can be properly analyzed. 
+            However, when doing that it is important to keep in mind that this was in a early stage of the game, when there were fewer experienced players, 
+            which means that there were fewer rare pokemon to begin with. The description of the dataset explained that it included all catches between August 2-8, 
+            when actually looking at the breakdown of the data, it looks like the data capturing started somewhere late on the second and was stopped early into the 8th, 
+            this means that there was only five full days of data collected, meaning that the description was misleading. May pokemon players believe that different pokemon will 
+            spawn under different weather conditions, we found that the most common weather condition was clear, both during the day, and at night. 
+            The fact that 100% of this data was from August should be taken into consideration when analyzing this. 
+            When looking at the distribution of pokemon caught over different hours, may patterns are shown. 
+            It is a fairly even distribution, meaning that there is not much difference between the hours. 
+            This goes to show that many pokemon go players are choosing to play at night. 
+            Using a time lapse may we were able to see how this changed around the world, and when the game was being played relative to all players around the world. 
+            A definition of time in categories was also involved, the categories of morning, afternoon, evening and night went to show that the number of players at 
+            night is almost equal to those during the day. Where the game is played most is also an interesting concept to consider, 
+            the visual shows that America and Europe have the most documented captures, although this is true, 
+            this is in an early stage of the game where the game was not released in some areas yet.
+        </p>
+        <h4>
+            Analysis:
+        </h4>
+        <p>
+            The creation of a machine learning model, capable of predicting a specific pokemon, or group of pokemon through the final variables latitude and longitude, 
+            minutes since sunrise/sunset, terrain, close to water, weather/ weather icon and rural/urban ended up not being as accurate as we would have hoped. 
+            Throughout the creation of many models, changing the predictive outcome and specific variables, the highest AUC was .62, which is not a great model. 
+            Although it was not as accurate of a model as we would have hoped for, it does do a better job than just a guess. 
+            The ROC curve plots true positive rate versus the false positive rate, and visualizes what the tpr and fpr will be for any cutoff value. Essentially meaning, 
+            that for however many pokemon that are guessed correctly, it will display the amount that are chosen incorrectly for that cutoff value. 
+            The results of these models lead us to believe that there is no specific pattern related to where and when pokemon appear, or if there is a pattern, it is much weaker than advertised.
+        </p>
+        <p>
+            The visualizations and the map provide one main trend that was slightly unexpected, pokemon players play 24/7, throughout the night. 
+            Coming in we knew that many pokemon players choose to play at night, what was surprising was that the number of captures at night were similar to captures numbers in the day. 
+            There are a few reasons behind this trend, starting with the time frame of the data. This data was collected in early August, this is a time where it is fairly warm outside in many areas, 
+            meaning that it would be appealing to play at night, when it is cooler out. Secondly, many people work during the day, only leaving the night time for leisure activities, such as playing pokemon. 
+            Practically, many people may think that less people will be playing at night, making the chances of catching pokemon will increase, pushing these people to play at night as well. 
+            Along with these basic ideas is the concept of gaming culture. Many typical gamers choose to play late at night, and this is no different for this game.
+        </p>
+        <h4>
+            Conclusion:
+        </h4>
+        <p>
+            At the conclusion of this project, trends occurred that were to our surprise, ranging from the type of pokemon, to when they are captured, and how pokemon explains the game. 
+            The type of pokemon differs in popularity, this is well known, and was confirmed by our dataset. However, the popularity of the pokemon does not change how well the models predicted, 
+            as it was predicted that they would. Many pokemon are caught at night, similar to the amount that are caught during the day, 
+            meaning that there is no significant downfall when there are less players. This is something that was surprising, we understood that their were players who choose to play at night, 
+            but no that there are similar numbers of night players as day players. Pokemon creators claim that there are significant places, times, and variables that control where pokemon spawn, 
+            leading to where they are caught. This is something that we feel is not true, or is not as powerful as advertised, due to the fact that these exact variables could not predict the pokemon, 
+            or even the type of pokemon.
+        </p>
+        <h4>
+            Future Work:
+        </h4>
+        <p>
+            In order to take this project further, the most important aspect would be to gather more data. 
+            It is predicted that if data for a larger period of time, and for a more condensed area was captured, then predictive models would become more accurate. 
+            The longer time span would allow for more trends to be captured in the data. If a smaller area such as a city was analyzed, this could make locational data, 
+            such as lat & lon, and close to water better predictors, this could also take into account other landmarks and terrain types. 
+            These things being much more specific can help to make the model far more accurate. As far as the Application goes, real time inputs would made it much more applicable for users. 
+            It would then be possible to search for what pokemon have been spawning lately, or even what are spawning now. This would increase the application value immensely.
+        </p>
+    </div>
+    <div>
+        <button type="button" id="presentationButton">Final Presentation</button>
+    </div>
+    <div id="presentation" class="content">
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation.jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (1).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (2).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (3).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (4).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (5).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (6).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (7).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (8).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (9).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (10).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (11).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (12).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (13).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (14).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (15).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (16).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (17).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (18).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (19).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (20).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (21).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (22).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (23).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (24).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (25).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (26).jpg" />
+        <img src="Final Presentation Slides/Predict ‘Em All- Final Presentation (27).jpg" />
+    </div>
+    <div>
+        <button type="button" id="dotButton">Code from Dot</button>
+    </div>
+    <div id="dot" class="content">
+        <img src="DotMapRCode.jpg" />
+    </div>
+    <div>
+        <button type="button" id="taylorButton">Code from Taylor</button>
+    </div>
+    <div id="taylor" class="content">
+        <p>
+            Here is a link to a Github repository containing code by Taylor:
+        </p>
+
+        <span href="https://github.com/taxelson/Predict-Em-All/tree/master">https://github.com/taxelson/Predict-Em-All/tree/master</span>
+    </div>
+    <div>
+        <button type="button" id="henryButton">Code from Henry</button>
+    </div>
+    <div id="henry" class="content">
+        <p>
+            Here is a link to a Github repository containing code by Henry:
+        </p>
+    </div>
+
+</body>
+</html>
